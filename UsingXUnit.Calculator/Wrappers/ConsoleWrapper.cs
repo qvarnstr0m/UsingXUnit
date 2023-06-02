@@ -24,4 +24,9 @@ public class ConsoleWrapper : IConsole
     {
         Console.Clear();
     }
+    
+    public void ReadKey()
+    {
+        Console.ReadKey();
+    }
 }

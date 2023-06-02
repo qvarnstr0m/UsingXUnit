@@ -30,11 +30,66 @@ public class UserInterface : IUserInterface
             _console.WriteLine("6. Exit");
             _console.Write("Enter a valid option: ");
             input = _console.ReadLine();
-
+            
+            List<double> userInput = new();
+            
             switch (input)
             {
                 case "1":
-                    GetNumbersFromUser();
+                    userInput = GetNumbersFromUser();
+                    if (userInput.Count == 2)
+                    {
+                        var calculator = new Calculator();
+                        PrintResult(calculator.Add(userInput[0], userInput[1]));
+                        ReturnToMainMenu();
+                    }
+                    else
+                    {
+                        _console.WriteLine("Invalid input. Please try again.");
+                        ReturnToMainMenu();
+                    }
+                    break;
+                case "2":
+                    userInput = GetNumbersFromUser();
+                    if (userInput.Count == 2)
+                    {
+                        var calculator = new Calculator();
+                        PrintResult(calculator.Subtract(userInput[0], userInput[1]));
+                        ReturnToMainMenu();
+                    }
+                    else
+                    {
+                        _console.WriteLine("Invalid input. Please try again.");
+                        ReturnToMainMenu();
+                    }
+                    break;
+                case "3":
+                    userInput = GetNumbersFromUser();
+                    if (userInput.Count == 2)
+                    {
+                        var calculator = new Calculator();
+                        PrintResult(calculator.Multiply(userInput[0], userInput[1]));
+                        ReturnToMainMenu();
+                    }
+                    else
+                    {
+                        _console.WriteLine("Invalid input. Please try again.");
+                        ReturnToMainMenu();
+                    }
+                    break;
+                case "4":
+                    userInput = GetNumbersFromUser();
+                    if (userInput.Count == 2)
+                    {
+                        var calculator = new Calculator();
+                        PrintResult(calculator.Divide(userInput[0], userInput[1]));
+                        ReturnToMainMenu();
+                    }
+                    else
+                    {
+                        _console.WriteLine("Invalid input. Please try again.");
+                        ReturnToMainMenu();
+                    }
                     break;
             }
         } while (input != "6");
@@ -53,8 +108,19 @@ public class UserInterface : IUserInterface
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Error getting numbers from user");
+            _logger.LogError("Error getting numbers from user");
             return new List<double>();
         }
+    }
+    
+    public void PrintResult(double result)
+    {
+        _console.WriteLine($"The result is: {result}");
+    }
+    
+    public void ReturnToMainMenu()
+    {
+        _console.WriteLine("Press any key to return to the main menu...");
+        _console.ReadKey();
     }
 }

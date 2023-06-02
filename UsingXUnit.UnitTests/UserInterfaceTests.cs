@@ -91,4 +91,104 @@ public class UserInterfaceTests
         // Assert
         Assert.Equal(2, numberList.Count);
     }
+    
+    [Fact]
+    public void PrintResult_ShouldPrintResult_WhenGivenResult()
+    {
+        // Arrange
+        var mockConsole = new Mock<IConsole>();
+        var mockLogger = new Mock<ILogger<UserInterface>>();
+        var userInterface = new UserInterface(mockConsole.Object, mockLogger.Object);
+    
+        // Act
+        userInterface.PrintResult(5);
+    
+        // Assert
+        mockConsole.Verify(x => x.WriteLine("The result is: 5"), Times.Once);
+    }
+    
+    [Fact]
+    public void ReturnToMainMenu_ShouldPrintAndReadLine_WhenCalled()
+    {
+        // Arrange
+        var mockConsole = new Mock<IConsole>();
+        var mockLogger = new Mock<ILogger<UserInterface>>();
+        var userInterface = new UserInterface(mockConsole.Object, mockLogger.Object);
+    
+        // Act
+        userInterface.ReturnToMainMenu();
+    
+        // Assert
+        mockConsole.Verify(x => x.WriteLine("Press any key to return to the main menu..."), Times.Once);
+        mockConsole.Verify(x => x.ReadKey(), Times.Once);
+    }
+    
+    [Fact]
+    public void Menu_ShouldCallGetNumbersFromUser_WhenSubtractOptionIsSelected()
+    {
+        // Arrange
+        var mockLogger = new Mock<ILogger<UserInterface>>();
+        var mockConsole = new Mock<IConsole>();
+        mockConsole.SetupSequence(x => x.ReadLine())
+            .Returns("2")  // Input for menu selection
+            .Returns("3")  // Input for the first number
+            .Returns("4")  // Input for the second number
+            .Returns("6"); // Input to exit the menu
+
+        var userInterface = new UserInterface(mockConsole.Object, mockLogger.Object);
+    
+        // Act
+        userInterface.Menu();
+    
+        // Assert
+        mockConsole.Verify(x => x.Write("Enter the first number: "), Times.Once);
+        mockConsole.Verify(x => x.Write("Enter the second number: "), Times.Once);
+        mockConsole.Verify(x => x.ReadLine(), Times.Exactly(4));
+    }
+    
+    [Fact]
+    public void Menu_ShouldCallGetNumbersFromUser_WhenMultiplyOptionIsSelected()
+    {
+        // Arrange
+        var mockLogger = new Mock<ILogger<UserInterface>>();
+        var mockConsole = new Mock<IConsole>();
+        mockConsole.SetupSequence(x => x.ReadLine())
+            .Returns("3")  // Input for menu selection
+            .Returns("3")  // Input for the first number
+            .Returns("4")  // Input for the second number
+            .Returns("6"); // Input to exit the menu
+
+        var userInterface = new UserInterface(mockConsole.Object, mockLogger.Object);
+    
+        // Act
+        userInterface.Menu();
+    
+        // Assert
+        mockConsole.Verify(x => x.Write("Enter the first number: "), Times.Once);
+        mockConsole.Verify(x => x.Write("Enter the second number: "), Times.Once);
+        mockConsole.Verify(x => x.ReadLine(), Times.Exactly(4));
+    }
+    
+    [Fact]
+    public void Menu_ShouldCallGetNumbersFromUser_WhenDivideOptionIsSelected()
+    {
+        // Arrange
+        var mockLogger = new Mock<ILogger<UserInterface>>();
+        var mockConsole = new Mock<IConsole>();
+        mockConsole.SetupSequence(x => x.ReadLine())
+            .Returns("4")  // Input for menu selection
+            .Returns("3")  // Input for the first number
+            .Returns("4")  // Input for the second number
+            .Returns("6"); // Input to exit the menu
+
+        var userInterface = new UserInterface(mockConsole.Object, mockLogger.Object);
+    
+        // Act
+        userInterface.Menu();
+    
+        // Assert
+        mockConsole.Verify(x => x.Write("Enter the first number: "), Times.Once);
+        mockConsole.Verify(x => x.Write("Enter the second number: "), Times.Once);
+        mockConsole.Verify(x => x.ReadLine(), Times.Exactly(4));
+    }
 }
