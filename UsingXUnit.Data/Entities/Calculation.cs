@@ -2,8 +2,17 @@ namespace UsingXUnit.Data.Entities;
 
 public class Calculation
 {
-    public double firstNumber { get; set; }
-    public double secondNumber { get; set; }
-    public char operation { get; set; }
-    public double result { get; set; }
+    public double FirstNumber { get; set; }
+    public double SecondNumber { get; set; }
+    public char Operation { get; set; }
+    public double Result { get; set; }
+    
+    //Constructor
+    public Calculation(double firstNumber, double secondNumber, char operation, double result)
+    {
+        FirstNumber = firstNumber;
+        SecondNumber = secondNumber;
+        Operation = operation;
+        Result = result;
+    }
 }

@@ -1,4 +1,6 @@
 using Microsoft.Extensions.Logging;
+using UsingXUnit.Data.Entities;
+using UsingXUnit.Data.Repositories.Interfaces;
 using UsingXUnit.Interfaces;
 
 namespace UsingXUnit;
@@ -7,11 +9,13 @@ public class UserInterface : IUserInterface
 {
     private readonly IConsole _console;
     private readonly ILogger _logger;
+    private readonly IRepository<Calculation> _repository;
 
-    public UserInterface(IConsole console, ILogger<UserInterface> logger)
+    public UserInterface(IConsole console, ILogger<UserInterface> logger, IRepository<Calculation> repository)
     {
         _console = console;
         _logger = logger;
+        _repository = repository;
     }
     
     public void Menu()
@@ -40,7 +44,8 @@ public class UserInterface : IUserInterface
                     if (userInput.Count == 2)
                     {
                         var calculator = new Calculator();
-                        PrintResult(calculator.Add(userInput[0], userInput[1]));
+                        PrintResult(calculator.Add(userInput[0], userInput[1])); 
+                        _repository.Create(new Calculation(userInput[0], userInput[1], '+', calculator.Add(userInput[0], userInput[1])));
                         ReturnToMainMenu();
                     }
                     else
@@ -55,6 +60,7 @@ public class UserInterface : IUserInterface
                     {
                         var calculator = new Calculator();
                         PrintResult(calculator.Subtract(userInput[0], userInput[1]));
+                        _repository.Create(new Calculation(userInput[0], userInput[1], '-', calculator.Subtract(userInput[0], userInput[1])));
                         ReturnToMainMenu();
                     }
                     else
@@ -69,6 +75,7 @@ public class UserInterface : IUserInterface
                     {
                         var calculator = new Calculator();
                         PrintResult(calculator.Multiply(userInput[0], userInput[1]));
+                        _repository.Create(new Calculation(userInput[0], userInput[1], '*', calculator.Multiply(userInput[0], userInput[1])));
                         ReturnToMainMenu();
                     }
                     else
@@ -83,6 +90,7 @@ public class UserInterface : IUserInterface
                     {
                         var calculator = new Calculator();
                         PrintResult(calculator.Divide(userInput[0], userInput[1]));
+                        _repository.Create(new Calculation(userInput[0], userInput[1], '/', calculator.Divide(userInput[0], userInput[1])));
                         ReturnToMainMenu();
                     }
                     else
