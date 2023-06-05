@@ -1,33 +1,32 @@
-# UsingXUnit. 
-## Acceptanstester. 
-### Test 1: Utför en addition. 
+# Using TDD, XUnit and Entity Framework
+## Acceptance Tests.
 
-+ Öppna applikationen
-+ Välj räknesätt: Addition
-+ Mata in första talet, t.ex. "5"
-+ Mata in andra talet, t.ex. "7"
-+ Tryck på Enter
-+ Kontrollera att resultatet visas som "12"
-+ Förväntat resultat: Applikationen presenterar resultatet "12" efter att användaren har matat in talen "5" och "7" och valt räknesättet addition.  
-  
-### Test 2: Utför en subtraktion. 
+### Test 1: Perform an addition.
++ Open the application
++ Choose the operation: Addition
++ Enter the first number, e.g. "5"
++ Enter the second number, e.g. "7"
++ Press Enter
++ Check that the result is displayed as "12". 
 
-+ Öppna applikationen
-+ Välj räknesätt: Subtraktion
-+ Mata in första talet, t.ex. "5"
-+ Mata in andra talet, t.ex. "7"
-+ Tryck på Enter
-+ Kontrollera att resultatet visas som "-2"
-+ Förväntat resultat: Applikationen presenterar resultatet "-2" efter att användaren har matat in talen "5" och "7" och valt räknesättet subtraktion.  
-  
+Expected result: The application presents the result "12" after the user has entered the numbers "5" and "7" and selected the operation of addition.  
 
-### Test 3: Utför en multiplikation. 
+### Test 2: Perform a subtraction.
++ Open the application
++ Choose the operation: Subtraction
++ Enter the first number, e.g. "5"
++ Enter the second number, e.g. "7"
++ Press Enter
++ Check that the result is displayed as "-2". 
 
-+ Öppna applikationen
-+ Välj räknesätt: Multiplikation
-+ Mata in första talet, t.ex. "5"
-+ Mata in andra talet, t.ex. "7"
-+ Tryck på Enter
-+ Kontrollera att resultatet visas som "35"
-+ Förväntat resultat: Applikationen presenterar resultatet "35" efter att användaren har matat in talen "5" och "7" och valt räknesättet multiplikation.  
-  
+Expected result: The application presents the result "-2" after the user has entered the numbers "5" and "7" and selected the operation of subtraction.
+
+### Test 3: Perform a multiplication.
++ Open the application
++ Choose the operation: Multiplication
++ Enter the first number, e.g. "5"
++ Enter the second number, e.g. "7"
++ Press Enter
++ Check that the result is displayed as "35". 
+
+Expected result: The application presents the result "35" after the user has entered the numbers "5" and "7" and selected the operation of multiplication.
