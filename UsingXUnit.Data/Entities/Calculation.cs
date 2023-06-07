@@ -2,6 +2,7 @@ namespace UsingXUnit.Data.Entities;
 
 public class Calculation
 {
+    public int Id { get; set; }
     public double FirstNumber { get; set; }
     public double SecondNumber { get; set; }
     public char Operation { get; set; }

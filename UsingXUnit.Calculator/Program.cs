@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using UsingXUnit;
 using UsingXUnit.Data;
 using UsingXUnit.Data.Entities;
@@ -12,9 +12,22 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath("/Users/mac/RiderProjects/UsingXUnit/UsingXUnit.Calculator/")
+            .AddJsonFile("appsettings.json")
+            .Build();
+        
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        
         using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
         var logger = loggerFactory.CreateLogger<UserInterface>();
-        var repository = new Repository<Calculation>(new CalculatorDbContext(new DbContextOptionsBuilder<CalculatorDbContext>().Options), logger);
+
+        var dbContextOptions = new DbContextOptionsBuilder<CalculatorDbContext>()
+            .UseSqlServer(connectionString)
+            .Options;
+        
+        var dbContext = new CalculatorDbContext(dbContextOptions);
+        var repository = new Repository<Calculation>(dbContext, logger);
         
         IUserInterface userInterface = new UserInterface(new ConsoleWrapper(), logger, repository);
         Calculator app = new Calculator(userInterface);
