@@ -99,10 +99,26 @@ public class UserInterface : IUserInterface
                         ReturnToMainMenu();
                     }
                     break;
+                case "5":
+                    ListPreviousResults();
+                    ReturnToMainMenu();
+                    break;
             }
         } while (input != "6");
     }
-    
+
+    public void ListPreviousResults()
+    {
+        var calculations = _repository.ReadAll();
+        _console.Clear();
+        _console.WriteLine("These are the previous calculations:");
+        
+        foreach (var calculation in calculations)
+        {
+            _console.WriteLine($"{calculation.FirstNumber} {calculation.Operation} {calculation.SecondNumber} = {calculation.Result}");
+        }
+    }
+
     public List<double> GetNumbersFromUser()
     {
         try
@@ -116,7 +132,7 @@ public class UserInterface : IUserInterface
         }
         catch (Exception e)
         {
-            _logger.LogError("Error getting numbers from user");
+            _logger.LogError(e,"Error getting numbers from user");
             return new List<double>();
         }
     }

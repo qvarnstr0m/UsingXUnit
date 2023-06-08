@@ -46,6 +46,14 @@ public class Repository<T> : IRepository<T> where T : class
 
     public IEnumerable<T> ReadAll()
     {
-        throw new NotImplementedException();
+        try
+        {
+            return _context.Set<T>().ToList();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e.Message);
+            throw;
+        }
     }
 }
