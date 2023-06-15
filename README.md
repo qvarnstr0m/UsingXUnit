@@ -1,6 +1,6 @@
 # Using TDD, XUnit and Entity Framework. 
 ## Intro
-Simple console app that serves as a basic calculator developed from acceptance tests and using TDD, which was the point in this school assignment so no focus on the calculator but rather on the tests and TDD.  
+Simple console app that serves as a basic calculator developed from acceptance tests and using TDD, which was the point in this project so no focus on the calculator but rather on the tests and TDD.  
   
 This is my first stab at test driven development and I took it pretty seriously, no code was written before a unit test was there to turn red before turning green. A fun experience and I hope to be able to continue working this way in the future.  
   
