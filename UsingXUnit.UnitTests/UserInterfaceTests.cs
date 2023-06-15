@@ -1,8 +1,6 @@
-using Azure;
 using Microsoft.Extensions.Logging;
 using Moq;
 using UsingXUnit.Data.Entities;
-using UsingXUnit.Data.Repositories;
 using UsingXUnit.Data.Repositories.Interfaces;
 using UsingXUnit.Interfaces;
 

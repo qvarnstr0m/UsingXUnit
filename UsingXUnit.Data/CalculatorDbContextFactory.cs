@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using UsingXUnit.Data;
 using Microsoft.Extensions.Configuration;
-using System.IO;
 
 
 
