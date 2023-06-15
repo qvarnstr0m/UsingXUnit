@@ -1,4 +1,20 @@
-# Using TDD, XUnit and Entity Framework
+# Using TDD, XUnit and Entity Framework. 
+## Intro
+Simple console app that serves as a basic calculator developed from acceptance tests and using TDD, which was the point in this school assignment so no focus on the calculator but rather on the tests and TDD.  
+  
+This is my first stab at test driven development and I took it pretty seriously, no code was written before a unit test was there to turn red before turning green. A fun experience and I hope to be able to continue working this way in the future.  
+  
+The inital development phase may take more time using TDD, but I feel it probably can be worth it since it should result in better code quality and a project that is more understandable and maintainable.  
+
+## Techstack & tools
++ .NET 6.0
++ Entity Framework
++ Moq
++ XUnit
++ Jetbrains Rider
++ Docker for running SQL Server on MacOs
++ Jetbrains Datagrip for manual DB checking
+
 ## Acceptance Tests.
 
 ### Test 1: Perform an addition.
